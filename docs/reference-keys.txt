@@ -1,0 +1,12 @@
+eq:eq1
+eq:eq2
+fig:phys-plot1
+welcome-to-s2y-lab-2
+introduction
+example-1-correlation
+exploratory-analysis
+population-correlation-hypothesis-test
+calculating-the-correlation-by-hand
+exercise-1-spurious-correlation
+exercise-2-identifying-relationships
+solution

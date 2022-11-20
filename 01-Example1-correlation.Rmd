@@ -1,0 +1,116 @@
+# Example 1: Correlation
+
+In an experiment conducted by the GU physiology department, a sample of volunteers had their power output measured (in watts) while they ran up stairs as fast as possible under different test conditions. Their gender was noted and their weight and leg length measurements recorded. The data are available from the csv file **phys1.csv**. To open this data file in RStudio type:
+```{r}
+phys <- read.csv("phys1.csv")
+```
+
+This will assign the data to the object `phys`. This worksheet contains six columns, described as follows:
+
+|              **C1:  Gender**
+|              **C2:  Weight (kgs)**
+|              **C3:  Leg Length (metres)**
+|              **C4:  Power1: Power output in the stair test**
+|              **C5:  Power2: Power output in a test with a ramp on the stairs**
+|              **C6:  Power3: Power output with ramp on the stairs and a fixed stride length**
+
+You can view these names by typing `names(phys)`.
+
+## Exploratory analysis
+
+**QUESTION**: Produce a scatterplot to examine the relationship between `Power1` and `Weight`.
+
+```{r eval = TRUE, webex.hide="Solution", echo=TRUE, out.width = '70%', fig.align = "center"}
+plot(Power1 ~ Weight, data = phys)
+```
+
+<br>
+
+#### Producing labelled scatterplots {-}
+
+The simple scatterplot may have ignored the possibility that any relationship between these variables might be different for males and females. So, we now label the plot according to the gender of the subjects. The following provides one approach to doing this in RStudio.
+
+The variable `Gender` within the data is a factor with two levels: Male and Female. Firstly, we will create a character variable for `Gender`, by using the command:
+
+```{r, eval=TRUE}
+Gender1 <- as.character(phys$Gender)
+```
+
+We can now use this new object to label the points by gender. This can be done by typing the following:
+
+```{r}
+plot(Power1 ~ Weight, data = phys, xlab = "Weight (kgs)", ylab = "Power Output (Watts)", 
+     pch = Gender1)
+```
+
+which produces the scatterplot given in Figure \@ref(fig:phys-plot1).
+
+```{r phys-plot1, echo=FALSE, eval=TRUE, fig.align='center', out.width = "70%", fig.cap = "Scatterplot of `Power1` versus `Weight` with gender highlighted."}
+plot(Power1 ~ Weight, data = phys, xlab = "Weight (kgs)", 
+     ylab = "Power Output (Watts)", pch = Gender1)
+```
+
+<br>
+**DISCUSSION**: What can we say about the relationship between `Power1` and `Weight` for males and females separately?
+
+<br>
+The plotting characters (as well as colour) highlighting males and females can also be chosen using numerical characters in `R`. For example,
+```{r}
+Gender2 <- as.numeric(phys$Gender)
+```
+
+## Population correlation hypothesis test
+
+Here we would like to assess the strength of the relationship, if any, between `Power1` and `Weight`. We are going to do this for male and female volunteers separately, such that we assess the statistical significance of the observed correlation between these two variables in the wider populations of (i) males and (ii) females.
+
+Firstly, we subset the data for males and females. One way to do this is:
+
+```{r, eval=TRUE}
+physM <- subset(phys, Gender == "Male", data = phys)
+physF <- subset(phys, Gender == "Female", data = phys)
+```
+
+We now perform, separately for males and females, the following hypothesis test:
+
+<center> $H_0: \rho=0$     vs.    $H_1:\rho \ne 0$</center>
+
+We test the null hypothesis, $H_0$, that is, that in the population of males/females the correlation between *Power Output* and *Weight* is 0 against the alternative hypothesis, $H_1$, that the correlation is not equal to 0.
+
+To compute the sample correlation coefficient, $r$, and perform our hypothesis test, we use the `cor.test` command. For the males data, the command is as follows:
+
+```{r}
+cor.test(physM$Power1, physM$Weight)
+```
+
+Note: in the `cor.test` command the $ notation is required to access the variables from the subsetted data.
+
+The hypothesis test produces a $p$-value, where we reject the null hypothesis, $H_0$, for small values of the $p$-value (typically $p$-values $< 0.05$). It also produces a 95% confidence interval for a range of plausible values for the true population correlation.
+
+**QUESTION**: 
+
+(a) What is the sample correlation coefficient for the males data? `r fitb(c("0.8136441","0.813644","0.81364","0.8136","0.814","0.81","0.8"))`
+
+(b) What is the $p$-value for the test? `r fitb(c("0.000224","0.00022","0.0002"))`
+
+(c) The sample correlation coefficient tells us that *Power Output* and *Weight* for males have a `r mcq(c("weak", answer="strong"))`, `r mcq(c(answer="positive","negative"))`, `r mcq(c(answer="linear", "non-linear"))` relationship.
+
+(d) Based on the $p$-value of the test, we would `r mcq(c(answer="reject the null hypothesis", "reject the alternative hypothesis", "fail to reject the null hypothesis", "fail to reject the alternative hypothesis"))` and conclude that $\rho$ `r mcq(c(answer="is significantly different from zero", "is not significantly different from zero"))`.
+
+<br>
+Now repeat the hypothesis test for the females data.
+
+**QUESTION**: 
+
+(a) What is the sample correlation coefficient for the females data? `r fitb(c("0.3664454","0.366445","0.36645","0.3664","0.366","0.37","0.4"))`
+
+(b) What is the $p$-value for the test? `r fitb(c("0.1791","0.179","0.18","0.2"))`
+
+(c) The sample correlation coefficient tells us that *Power Output* and *Weight* for females have a `r mcq(c(answer="weak", "strong"))`, `r mcq(c(answer="positive","negative"))`, `r mcq(c(answer="linear", "non-linear"))` relationship.
+
+(d) Based on the $p$-value of the test, we would `r mcq(c("reject the null hypothesis", "reject the alternative hypothesis", answer="fail to reject the null hypothesis", "fail to reject the alternative hypothesis"))` and conclude that $\rho$ `r mcq(c("is significantly different from zero", answer="is not significantly different from zero"))`.
+
+<br>
+Note: if we do not subset the data by gender, we obtain a sample correlation coefficient $r = 0.89$, with a $p$-value $\leq 0.05$, and thus we would conclude that there is a strong, positive linear relationship between *Power Output* and *Weight*. However, we now know that is not the case for females.
+
+## Calculating the correlation by hand
+

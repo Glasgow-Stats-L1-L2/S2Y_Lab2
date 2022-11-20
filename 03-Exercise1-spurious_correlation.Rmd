@@ -1,0 +1,37 @@
+# Exercise 1: Spurious correlation
+
+Nicholas Cage data
+
+Hollywood legend Nicholas Cage seems to have a problem. It appears that every time he releases a new film upon the world many people drown by falling into pools of water. Coincidence? Or, are some of his films that bad?
+
+**Data: Cage.csv**
+
+**Columns:**
+
+|               **C1: &emsp; Year &emsp; &emsp; &emsp; &emsp; Year of film releases**
+
+|               **C2: &emsp; NumFilms &nbsp;&ensp; &emsp; Number of Nicholas Cage films released that year**
+
+|               **C3: &emsp; NumDrowns &emsp; Number of people who drowned falling into pools that year**
+
+<br>
+Read in the data using:
+```{r, eval=TRUE}
+Cage <- read.csv("Cage.csv")
+```
+
+**TASK**
+
+(a) Produce a scatterplot of **NumDrowned** (_y_) against **NumFilms** (_x_). What can we say about their relationship?
+
+(b) Use the `cor.test` command to perform a correlation hypothesis test. What does this tell us about the relationship between **NumDrowned** and **NumFilms**?
+
+`r hide("Hint")`
+* What is the sample correlation coefficient and how to interpret this value?
+* What is $p$-value associated with the hypothesis test and how to interpret this value?
+`r unhide()`
+
+<br>
+This is an example of **spurious correlation**, where two variables that are not related to each other in any way, that is, they are independent, could be inferred as being related. The number of Nicholas Cage films released in a year is clearly not related to the number of drowning accidents in that same year, but if we just take our correlation hypothesis test on face value, then we would think otherwise.
+
+

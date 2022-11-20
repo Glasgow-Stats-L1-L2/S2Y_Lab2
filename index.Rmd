@@ -1,0 +1,63 @@
+---
+title: |
+    | S2Y Lab 2
+    | Understanding correlation and further exploring relationships
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+---
+
+```{r setup, include = FALSE}
+library(webexercises)
+library(tinytex)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(tidyverse)
+library(PASWR)
+
+phys <- read.csv("phys1.csv")
+
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+
+```{r include=FALSE, echo=FALSE}
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+# Welcome to S2Y Lab 2
+
+Intended Learning Outcomes:
+
+- calculate and interpret the sample correlation coefficient;
+
+- perform hypothesis tests on the population correlation and interpret the decision;
+
+- calculate least squares estimates of model parameters using vector-matrix formulation.
+
+## Introduction
+
+In the lectures we learned how to assess the strength of a linear relationship between random variables using the correlation coefficient.  The population correlation is a measure of the magnitude of the strength of the relationship between two random variables $X$ and $Y$, and is defined as
+
+\begin{equation}
+\rho(X,Y) = \frac{\text{Cov}(X,Y)}{\sqrt{\text{Var}(X)\text{Var}(Y)}},
+(\#eq:eq1)
+\end{equation}
+
+and can be estimated by replacing each of $\text{Cov}(X,Y)$, $\text{Var}(X)$ and $\text{Var}(Y)$ by their unbiased estimators to give
+
+\begin{equation}
+r = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}=\frac{\sum^{n}_{i=1}(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum^{n}_{i=1}(x_i-\bar{x})^2(y_i-\bar{y})^2}},
+(\#eq:eq2)
+\end{equation}
+
+the **sample correlation coefficient** ($-1 \le r \le 1$).
+
+Given a sample of data, we can assess the statistical significance of the observed correlations between
+variables in the wider population. To do this we perform a hypothesis test (more on this in Example 1).
+

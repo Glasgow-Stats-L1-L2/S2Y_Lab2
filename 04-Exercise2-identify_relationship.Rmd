@@ -1,0 +1,91 @@
+# Exercise 2: Identifying relationships
+
+For the following contexts determine whether fitting a regression model would be appropriate. If a regression model is appropriate, identify which variable is the **response variable** and which is the **explanatory variable**.
+
+(a) Is federal spending, on average, higher or lower in countries with high rates of poverty?
+
+|        Regression model appropriate? `r mcq(c(answer="Yes", "No"))`
+
+|        Federal spending: `r mcq(c("Explanatory", answer="Response", "N/A"))`
+
+|        Poverty rates: `r mcq(c(answer="Explanatory", "Response", "N/A"))`
+
+<br>
+
+(b) A study was conducted to determine whether surgery or chemotherapy results in higher survival rates for a certain type of cancer.
+
+|        Regression model appropriate? `r mcq(c(answer="Yes", "No"))` 
+
+|        Type of treatment: `r mcq(c(answer="Explanatory", "Response", "N/A"))`
+
+|        Survival rates: `r mcq(c("Explanatory", answer="Response", "N/A"))`
+
+<br>
+
+(c) A study found that, overall, left-handed people die at a younger age than right-handed people.
+
+|        Regression model appropriate? `r mcq(c("Yes", answer="No"))` 
+
+|        Age of death: `r mcq(c("Explanatory", "Response", answer="N/A"))`
+
+|        Left- or right-handed: `r mcq(c("Explanatory", "Response", answer="N/A"))`
+
+<br>
+
+(d) Per capita cheese consumption is correlated with the number of people who died getting tangled in bed sheets.
+
+|        Regression model appropriate? `r mcq(c("Yes", answer="No"))`
+
+|        Number of people who died getting tangled in bed sheets: `r mcq(c("Explanatory", "Response", answer="N/A"))`
+
+|        Per capita cheese consumption: `r mcq(c("Explanatory", "Response", answer="N/A"))`
+
+<br>
+
+(e) An experiment was conducted to test the effects of sleep deprivation on human reaction times.
+
+|        Regression model appropriate? `r mcq(c(answer="Yes", "No"))` 
+
+|        Hours of sleep: `r mcq(c(answer="Explanatory", "Response", "N/A"))` 
+
+|        Reaction times: `r mcq(c("Explanatory", answer="Response", "N/A"))`
+
+<br>
+
+(f) A study was conducted in order to predict the GPA of university students given their high school GPA.
+
+|        Regression model appropriate? `r mcq(c(answer="Yes", "No"))`
+
+|        GPA of university students: `r mcq(c("Explanatory", answer="Response", "N/A"))` 
+
+|        High school GPA: `r mcq(c(answer="Explanatory", "Response", "N/A"))`
+
+<br>
+
+(g) A company wants to know if there is a significant relationship between its advertising expenditures and its sales volume.
+
+|        Regression model appropriate? `r mcq(c(answer="Yes", "No"))` 
+
+|        Advertising expenditures: `r mcq(c(answer="Explanatory", "Response", "N/A"))` 
+
+|        Sales volume: `r mcq(c("Explanatory", answer="Response", "N/A"))`
+
+<br>
+
+(h) A sample of insured drivers with similar insurance policies were randomly selected. Interest is in determining whether there is a significant relationship between driving experience and insurance premium.
+
+|        Regression model appropriate? `r mcq(c(answer="Yes", "No"))` 
+
+|        Driving experience: `r mcq(c(answer="Explanatory", "Response", "N/A"))`
+
+|        Insurance premium: `r mcq(c("Explanatory", answer="Response", "N/A"))` 
+
+<br>
+
+(i) Ice cream sales are correlated with murder rates in the US.
+
+|        Regression model appropriate? `r mcq(c("Yes", answer="No"))`
+
+|        Murder rates: `r mcq(c("Explanatory", "Response", answer="N/A"))`
+
+|        Ice cream sales: `r mcq(c("Explanatory", "Response", answer="N/A"))`

@@ -1,0 +1,17 @@
+# Solution
+
+Task 
+
+(a) Producing a scatterplot
+```{r}
+plot(NumDrowned ~ NumFilms, data = Cage, xlab = "Number of Nicholas Cage films released in a year", ylab = "Number of people who drowned falling into pools that year")
+```
+
+(b) Correlation test
+```{r, eval=TRUE}
+cor.test(Cage$NumDrowned, Cage$NumFilms)
+```
+
+The sample correlation coefficient is 0.666, indicating a moderate positive linear relationship between **NumDrowned** and **NumFilms**. 
+
+The $p$-value is less than 0.05. Therefore, we reject the null hypothesis and conclude that the population correlation $\rho$ is statistically significantly different from 0. 
