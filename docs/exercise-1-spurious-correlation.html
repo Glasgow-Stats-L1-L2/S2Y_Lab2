@@ -4,19 +4,19 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Exercise 1: Spurious correlation | main.knit</title>
+  <title>4 Exercise 1: Spurious correlation | main.knit</title>
   <meta name="description" content="S2Y Lab 2<br />
 Understanding correlation and further exploring relationships</div>" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Exercise 1: Spurious correlation | main.knit" />
+  <meta property="og:title" content="4 Exercise 1: Spurious correlation | main.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Exercise 1: Spurious correlation | main.knit" />
+  <meta name="twitter:title" content="4 Exercise 1: Spurious correlation | main.knit" />
   
   
   
@@ -29,7 +29,7 @@ Understanding correlation and further exploring relationships</div>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="example-1-correlation.html"/>
+<link rel="prev" href="example-2-simulating-random-variables.html"/>
 <link rel="next" href="exercise-2-identifying-relationships.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -143,9 +143,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="example-1-correlation.html"><a href="example-1-correlation.html#population-correlation-hypothesis-test"><i class="fa fa-check"></i><b>2.2</b> Population correlation hypothesis test</a></li>
 <li class="chapter" data-level="2.3" data-path="example-1-correlation.html"><a href="example-1-correlation.html#calculating-the-correlation-by-hand"><i class="fa fa-check"></i><b>2.3</b> Calculating the correlation by hand</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="exercise-1-spurious-correlation.html"><a href="exercise-1-spurious-correlation.html"><i class="fa fa-check"></i><b>3</b> Exercise 1: Spurious correlation</a></li>
-<li class="chapter" data-level="4" data-path="exercise-2-identifying-relationships.html"><a href="exercise-2-identifying-relationships.html"><i class="fa fa-check"></i><b>4</b> Exercise 2: Identifying relationships</a></li>
-<li class="chapter" data-level="5" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>5</b> Solution</a></li>
+<li class="chapter" data-level="3" data-path="example-2-simulating-random-variables.html"><a href="example-2-simulating-random-variables.html"><i class="fa fa-check"></i><b>3</b> Example 2: Simulating random variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="example-2-simulating-random-variables.html"><a href="example-2-simulating-random-variables.html#independent-random-variables"><i class="fa fa-check"></i><b>3.1</b> Independent random variables</a></li>
+<li class="chapter" data-level="3.2" data-path="example-2-simulating-random-variables.html"><a href="example-2-simulating-random-variables.html#correlated-random-variables"><i class="fa fa-check"></i><b>3.2</b> Correlated random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exercise-1-spurious-correlation.html"><a href="exercise-1-spurious-correlation.html"><i class="fa fa-check"></i><b>4</b> Exercise 1: Spurious correlation</a></li>
+<li class="chapter" data-level="5" data-path="exercise-2-identifying-relationships.html"><a href="exercise-2-identifying-relationships.html"><i class="fa fa-check"></i><b>5</b> Exercise 2: Identifying relationships</a></li>
+<li class="chapter" data-level="6" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>6</b> Solution</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="solution.html"><a href="solution.html#task-1"><i class="fa fa-check"></i><b>6.1</b> Task 1</a></li>
+<li class="chapter" data-level="6.2" data-path="solution.html"><a href="solution.html#task-2"><i class="fa fa-check"></i><b>6.2</b> Task 2</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -164,9 +173,8 @@ Understanding correlation and further exploring relationships</div></a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exercise-1-spurious-correlation" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Exercise 1: Spurious correlation<a href="exercise-1-spurious-correlation.html#exercise-1-spurious-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Nicholas Cage data</p>
+<div id="exercise-1-spurious-correlation" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Exercise 1: Spurious correlation<a href="exercise-1-spurious-correlation.html#exercise-1-spurious-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Hollywood legend Nicholas Cage seems to have a problem. It appears that every time he releases a new film upon the world many people drown by falling into pools of water. Coincidence? Or, are some of his films that bad?</p>
 <p><strong>Data: Cage.csv</strong></p>
 <p><strong>Columns:</strong></p>
@@ -175,8 +183,8 @@ Understanding correlation and further exploring relationships</div></a>
 <div class="line-block">              <strong>C3:   NumDrowns   Number of people who drowned falling into pools that year</strong></div>
 <p><br>
 Read in the data using:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="exercise-1-spurious-correlation.html#cb8-1" aria-hidden="true" tabindex="-1"></a>Cage <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Cage.csv&quot;</span>)</span></code></pre></div>
-<p><strong>TASK</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="exercise-1-spurious-correlation.html#cb11-1" aria-hidden="true" tabindex="-1"></a>Cage <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Cage.csv&quot;</span>)</span></code></pre></div>
+<p><strong>TASK 2</strong></p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Produce a scatterplot of <strong>NumDrowned</strong> (<em>y</em>) against <strong>NumFilms</strong> (<em>x</em>). What can we say about their relationship?</p></li>
 <li><p>Use the <code>cor.test</code> command to perform a correlation hypothesis test. What does this tell us about the relationship between <strong>NumDrowned</strong> and <strong>NumFilms</strong>?</p></li>
@@ -192,6 +200,7 @@ Hint
 </div>
 <p><br>
 This is an example of <strong>spurious correlation</strong>, where two variables that are not related to each other in any way, that is, they are independent, could be inferred as being related. The number of Nicholas Cage films released in a year is clearly not related to the number of drowning accidents in that same year, but if we just take our correlation hypothesis test on face value, then we would think otherwise.</p>
+<p>Reference: Spurious Correlations, Tyler Vigen</p>
 
 </div>
 <script>
@@ -370,7 +379,7 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="example-1-correlation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="example-2-simulating-random-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="exercise-2-identifying-relationships.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

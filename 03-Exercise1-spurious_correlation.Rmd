@@ -1,7 +1,5 @@
 # Exercise 1: Spurious correlation
 
-Nicholas Cage data
-
 Hollywood legend Nicholas Cage seems to have a problem. It appears that every time he releases a new film upon the world many people drown by falling into pools of water. Coincidence? Or, are some of his films that bad?
 
 **Data: Cage.csv**
@@ -20,7 +18,7 @@ Read in the data using:
 Cage <- read.csv("Cage.csv")
 ```
 
-**TASK**
+**TASK 2**
 
 (a) Produce a scatterplot of **NumDrowned** (_y_) against **NumFilms** (_x_). What can we say about their relationship?
 
@@ -34,4 +32,4 @@ Cage <- read.csv("Cage.csv")
 <br>
 This is an example of **spurious correlation**, where two variables that are not related to each other in any way, that is, they are independent, could be inferred as being related. The number of Nicholas Cage films released in a year is clearly not related to the number of drowning accidents in that same year, but if we just take our correlation hypothesis test on face value, then we would think otherwise.
 
-
+Reference: Spurious Correlations, Tyler Vigen

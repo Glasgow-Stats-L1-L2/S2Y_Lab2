@@ -17,6 +17,7 @@ library(knitr)
 library(ggplot2)
 library(tidyverse)
 library(PASWR)
+library(MASS)
 
 phys <- read.csv("phys1.csv")
 

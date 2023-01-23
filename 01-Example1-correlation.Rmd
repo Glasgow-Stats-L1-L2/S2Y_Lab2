@@ -114,3 +114,45 @@ Note: if we do not subset the data by gender, we obtain a sample correlation coe
 
 ## Calculating the correlation by hand
 
+To compute the sample correlation coefficient, $r$, the command `cor.test` uses the formula given in \@ref(eq:eq2). To check that the `cor.test` command is ‘correct’, we can ourselves calculate the correlation directly
+using the following commands:
+```{r}
+var  # computes the variance of a given vector
+cov  # computes the covariance between the vectors x and y
+sum  # returns the sum of the values given
+mean # computes the mean of a given vector
+sqrt # computes the square-root of a given vector
+```
+
+**TASK 1**: Give your answers to 3 decimal places where required.
+
+(a) Using the commands `var` and `cov`, compute the variance and covariance given in \@ref(eq:eq1) for the males data, where $Y$ denotes the response variable *Power Output*, and $X$ denotes the explanatory variable *Weight*.
+
+|        The variance of the explanatory variable *Weight* is `r fitb(47.374)`.
+|        The variance of the response variable *Power Output* is `r fitb(c(25435.39, 25435.390))`.
+|        The covariance of the response and explanatory variables is `r fitb(893.147)`.
+
+<br>
+
+(b) Using the variance and covariance obtained in (a), and the square-root command, `sqrt`, compute the sample correlation coefficient using the formula given in \@ref(eq:eq1) for the males data. Does this match what was obtained using the `cor.test` command?
+
+|        The sample correlation coefficient using the variance and covariance obtained in (a) is `r fitb(0.814)`.
+|        This `r mcq(c(answer="matches", "does not match"))` the sample correlation coefficient found using `cor.test`.
+
+<br>
+
+(c) Use the `mean`, `sum`, and `sqrt` commands to compute the sum of squares, $S_{xx}$ and $S_{yy}$, and the sum of products, $S_{xy}$, given in formula \@ref(eq:eq2) for the males data.
+
+|        $S_{xx}$: `r fitb(663.233)`
+|        $S_{yy}$: `r fitb(c("356095.5","356095.500"))`
+|        $S_{xy}$: `r fitb(c("12504.06","12504.060"))`
+
+<br>
+
+(d) Use the sum of squares and sum of products obtained in (c) to compute the sample correlation coefficient, $r$, using formula \@ref(eq:eq2) for the males data. Does this match your answer from (b) and the `cor.test` command?
+
+|        The sample correlation coefficient found using the sum of squares and sum of products obtained in (c) is `r fitb(0.814)`. This `r mcq(c(answer="matches", "does not match"))` the answer from (b) and the sample correlation coefficient found using `cor.test`.
+
+<br>
+
+(e) Repeat (a)–(d) for the females data and compare the answers obtained from formulae \@ref(eq:eq1) and \@ref(eq:eq2) with that found using the `cor.test` command.

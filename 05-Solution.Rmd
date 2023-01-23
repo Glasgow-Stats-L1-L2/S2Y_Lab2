@@ -1,6 +1,52 @@
 # Solution
 
-Task 
+## Task 1
+
+(a)
+```{r, eval=TRUE}
+X <- physM$Weight
+Y <- physM$Power1
+
+c(var(X), var(Y), cov(X, Y))
+```
+
+(b)
+```{r, eval=TRUE}
+cov(X, Y)/sqrt(var(X)*var(Y))
+cor.test(physM$Weight, physM$Power1)$estimate
+```
+
+(c)
+```{r, eval=TRUE}
+Sxx <- sum((X-mean(X))^2)
+Syy <- sum((Y-mean(Y))^2)
+Sxy <- sum((X-mean(X))*(Y-mean(Y)))
+
+c(Sxx, Syy, Sxy)
+```
+
+(d)
+```{r, eval=TRUE}
+Sxy/sqrt(Sxx*Syy)
+```
+
+(e)
+```{r, eval=TRUE}
+X <- physF$Power1
+Y <- physF$Weight
+
+cor.test(X, Y)
+
+cov(X, Y)/sqrt(var(X)*var(Y))
+
+Sxx <- sum((X-mean(X))^2)
+Syy <- sum((Y-mean(Y))^2)
+Sxy <- sum((X-mean(X))*(Y-mean(Y)))
+Sxy / sqrt(Sxx * Syy)
+
+```
+
+## Task 2
 
 (a) Producing a scatterplot
 ```{r}

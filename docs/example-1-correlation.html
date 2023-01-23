@@ -7,7 +7,7 @@
   <title>2 Example 1: Correlation | main.knit</title>
   <meta name="description" content="S2Y Lab 2<br />
 Understanding correlation and further exploring relationships</div>" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Example 1: Correlation | main.knit" />
   <meta property="og:type" content="book" />
@@ -30,7 +30,7 @@ Understanding correlation and further exploring relationships</div>" />
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="exercise-1-spurious-correlation.html"/>
+<link rel="next" href="example-2-simulating-random-variables.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -143,9 +143,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="example-1-correlation.html"><a href="example-1-correlation.html#population-correlation-hypothesis-test"><i class="fa fa-check"></i><b>2.2</b> Population correlation hypothesis test</a></li>
 <li class="chapter" data-level="2.3" data-path="example-1-correlation.html"><a href="example-1-correlation.html#calculating-the-correlation-by-hand"><i class="fa fa-check"></i><b>2.3</b> Calculating the correlation by hand</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="exercise-1-spurious-correlation.html"><a href="exercise-1-spurious-correlation.html"><i class="fa fa-check"></i><b>3</b> Exercise 1: Spurious correlation</a></li>
-<li class="chapter" data-level="4" data-path="exercise-2-identifying-relationships.html"><a href="exercise-2-identifying-relationships.html"><i class="fa fa-check"></i><b>4</b> Exercise 2: Identifying relationships</a></li>
-<li class="chapter" data-level="5" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>5</b> Solution</a></li>
+<li class="chapter" data-level="3" data-path="example-2-simulating-random-variables.html"><a href="example-2-simulating-random-variables.html"><i class="fa fa-check"></i><b>3</b> Example 2: Simulating random variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="example-2-simulating-random-variables.html"><a href="example-2-simulating-random-variables.html#independent-random-variables"><i class="fa fa-check"></i><b>3.1</b> Independent random variables</a></li>
+<li class="chapter" data-level="3.2" data-path="example-2-simulating-random-variables.html"><a href="example-2-simulating-random-variables.html#correlated-random-variables"><i class="fa fa-check"></i><b>3.2</b> Correlated random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exercise-1-spurious-correlation.html"><a href="exercise-1-spurious-correlation.html"><i class="fa fa-check"></i><b>4</b> Exercise 1: Spurious correlation</a></li>
+<li class="chapter" data-level="5" data-path="exercise-2-identifying-relationships.html"><a href="exercise-2-identifying-relationships.html"><i class="fa fa-check"></i><b>5</b> Exercise 2: Identifying relationships</a></li>
+<li class="chapter" data-level="6" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>6</b> Solution</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="solution.html"><a href="solution.html#task-1"><i class="fa fa-check"></i><b>6.1</b> Task 1</a></li>
+<li class="chapter" data-level="6.2" data-path="solution.html"><a href="solution.html#task-2"><i class="fa fa-check"></i><b>6.2</b> Task 2</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -245,6 +254,42 @@ Note: if we do not subset the data by gender, we obtain a sample correlation coe
 </div>
 <div id="calculating-the-correlation-by-hand" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Calculating the correlation by hand<a href="example-1-correlation.html#calculating-the-correlation-by-hand" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To compute the sample correlation coefficient, <span class="math inline">\(r\)</span>, the command <code>cor.test</code> uses the formula given in <a href="index.html#eq:eq2">(1.2)</a>. To check that the <code>cor.test</code> command is ‘correct’, we can ourselves calculate the correlation directly
+using the following commands:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="example-1-correlation.html#cb8-1" aria-hidden="true" tabindex="-1"></a>var  <span class="co"># computes the variance of a given vector</span></span>
+<span id="cb8-2"><a href="example-1-correlation.html#cb8-2" aria-hidden="true" tabindex="-1"></a>cov  <span class="co"># computes the covariance between the vectors x and y</span></span>
+<span id="cb8-3"><a href="example-1-correlation.html#cb8-3" aria-hidden="true" tabindex="-1"></a>sum  <span class="co"># returns the sum of the values given</span></span>
+<span id="cb8-4"><a href="example-1-correlation.html#cb8-4" aria-hidden="true" tabindex="-1"></a>mean <span class="co"># computes the mean of a given vector</span></span>
+<span id="cb8-5"><a href="example-1-correlation.html#cb8-5" aria-hidden="true" tabindex="-1"></a>sqrt <span class="co"># computes the square-root of a given vector</span></span></code></pre></div>
+<p><strong>TASK 1</strong>: Give your answers to 3 decimal places where required.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Using the commands <code>var</code> and <code>cov</code>, compute the variance and covariance given in <a href="index.html#eq:eq1">(1.1)</a> for the males data, where <span class="math inline">\(Y\)</span> denotes the response variable <em>Power Output</em>, and <span class="math inline">\(X\)</span> denotes the explanatory variable <em>Weight</em>.</li>
+</ol>
+<div class="line-block">       The variance of the explanatory variable <em>Weight</em> is <input class='webex-solveme nospaces' size='6' data-answer='["47.374"]'/>.<br />
+       The variance of the response variable <em>Power Output</em> is <input class='webex-solveme nospaces' size='8' data-answer='["25435.39"]'/>.<br />
+       The covariance of the response and explanatory variables is <input class='webex-solveme nospaces' size='7' data-answer='["893.147"]'/>.</div>
+<p><br></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Using the variance and covariance obtained in (a), and the square-root command, <code>sqrt</code>, compute the sample correlation coefficient using the formula given in <a href="index.html#eq:eq1">(1.1)</a> for the males data. Does this match what was obtained using the <code>cor.test</code> command?</li>
+</ol>
+<div class="line-block">       The sample correlation coefficient using the variance and covariance obtained in (a) is <input class='webex-solveme nospaces' size='5' data-answer='["0.814",".814"]'/>.<br />
+       This <select class='webex-select'><option value='blank'></option><option value='answer'>matches</option><option value=''>does not match</option></select> the sample correlation coefficient found using <code>cor.test</code>.</div>
+<p><br></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Use the <code>mean</code>, <code>sum</code>, and <code>sqrt</code> commands to compute the sum of squares, <span class="math inline">\(S_{xx}\)</span> and <span class="math inline">\(S_{yy}\)</span>, and the sum of products, <span class="math inline">\(S_{xy}\)</span>, given in formula <a href="index.html#eq:eq2">(1.2)</a> for the males data.</li>
+</ol>
+<div class="line-block">       <span class="math inline">\(S_{xx}\)</span>: <input class='webex-solveme nospaces' size='7' data-answer='["663.233"]'/><br />
+       <span class="math inline">\(S_{yy}\)</span>: <input class='webex-solveme nospaces' size='10' data-answer='["356095.5","356095.500"]'/><br />
+       <span class="math inline">\(S_{xy}\)</span>: <input class='webex-solveme nospaces' size='9' data-answer='["12504.06","12504.060"]'/></div>
+<p><br></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Use the sum of squares and sum of products obtained in (c) to compute the sample correlation coefficient, <span class="math inline">\(r\)</span>, using formula <a href="index.html#eq:eq2">(1.2)</a> for the males data. Does this match your answer from (b) and the <code>cor.test</code> command?</li>
+</ol>
+<div class="line-block">       The sample correlation coefficient found using the sum of squares and sum of products obtained in (c) is <input class='webex-solveme nospaces' size='5' data-answer='["0.814",".814"]'/>. This <select class='webex-select'><option value='blank'></option><option value='answer'>matches</option><option value=''>does not match</option></select> the answer from (b) and the sample correlation coefficient found using <code>cor.test</code>.</div>
+<p><br></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Repeat (a)–(d) for the females data and compare the answers obtained from formulae <a href="index.html#eq:eq1">(1.1)</a> and <a href="index.html#eq:eq2">(1.2)</a> with that found using the <code>cor.test</code> command.</li>
+</ol>
 
 </div>
 </div>
@@ -425,7 +470,7 @@ window.onload = function() {
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="exercise-1-spurious-correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="example-2-simulating-random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
